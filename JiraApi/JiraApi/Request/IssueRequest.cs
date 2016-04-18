@@ -34,11 +34,6 @@ namespace JiraApi.Request
             CustomFields = Enumerable.Empty<CustomFieldBase>();
         }
 
-        protected override void ConfigurParams()
-        {
-            ExtendParams("fields=status,resolution");
-        }
-
         protected override void ConfigurBody(Dictionary<String, dynamic> body)
         {
             var updateSection = new Dictionary<String, dynamic>();
