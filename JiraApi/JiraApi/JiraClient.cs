@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JiraApi.Request;
 using JiraApi.Authorization;
+using System.Net.Http.Headers;
 
 namespace JiraApi
 {
@@ -16,8 +17,9 @@ namespace JiraApi
     /// </summary>
     public class JiraClient : IDisposable
     {
-        public AuthorizationBase Authorization
+        public AuthenticationHeaderValue Authorization
         {
+            get { return _jiraHttpClient.DefaultRequestHeaders.Authorization; }
             set
             {
                 _jiraHttpClient.DefaultRequestHeaders.Authorization = value;

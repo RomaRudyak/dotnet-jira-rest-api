@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JiraApi.Authorization
 {
-    public class BasicAuthentication : AuthorizationBase
+    public class BasicAuthentication : AuthenticationHeaderValue
     {
         public BasicAuthentication(String user, String password)
             : base ("Basic", GetParam(user, password))
