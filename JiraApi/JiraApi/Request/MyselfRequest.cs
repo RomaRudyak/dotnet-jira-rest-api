@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JiraApi.Request
 {
-    public class MyselfUserRequest : JiraRestRequestBase
+    public class MyselfRequest : JiraRestRequestBase
     {
-        public MyselfUserRequest(HttpMethod method)
+        public MyselfRequest(HttpMethod method)
             : base(method)
         {
 

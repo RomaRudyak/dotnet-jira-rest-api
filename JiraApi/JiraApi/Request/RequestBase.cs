@@ -37,7 +37,12 @@ namespace JiraApi.Request
         /// <returns>
         /// Returns request path part.
         /// </returns>
-        internal String BuildPath()
+#if UNITTESTS
+        public
+#else
+        internal
+#endif
+            String BuildPath()
         {
             ConfigurPath();
             ConfigurParams();
@@ -57,7 +62,7 @@ namespace JiraApi.Request
         /// </returns>
         internal HttpContent BuildBody()
         {
-            return CreateHttpContent();;
+            return CreateHttpContent();
         }
 
         /// <summary>

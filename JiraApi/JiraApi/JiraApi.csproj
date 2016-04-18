@@ -33,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UnitTests|AnyCPU'">
+    <OutputPath>bin\UnitTests\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITTESTS</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="app.config" />
@@ -63,7 +67,7 @@
     <Compile Include="Request\IssueRequestBase.cs" />
     <Compile Include="Request\IssueTransactionRequest.cs" />
     <Compile Include="Request\JiraRestRequestBase.cs" />
-    <Compile Include="Request\MyselfUserRequest.cs" />
+    <Compile Include="Request\MyselfRequest.cs" />
     <Compile Include="Request\PriorityRequest.cs" />
     <Compile Include="Request\ProjectRequest.cs" />
     <Compile Include="Request\ProjectVersionRequest.cs" />
