@@ -22,10 +22,14 @@ namespace JiraApi.CustomFields
         /// Custom field Id
         /// </summary>
         public String Id { get; private set; }
+        /// <summary>
+        /// Returns serialized value of field
+        /// </summary>
+        public String Value { get { return _serializedObject ?? (_serializedObject = JsonConvert.SerializeObject(_value)); } }
 
         public override string ToString()
         {
-            return _serializedObject ?? (_serializedObject = JsonConvert.SerializeObject(_value));
+            return String.Format("\"{0}\":{1}", FullName, Value);
         }
 
         protected CustomFieldBase(String id, dynamic value)

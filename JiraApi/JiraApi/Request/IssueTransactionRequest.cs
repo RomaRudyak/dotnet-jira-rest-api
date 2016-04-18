@@ -63,7 +63,7 @@ namespace JiraApi.Request
                 {
                     new Dictionary<String, String>
                     {
-                        { "set", customfield.ToString() }
+                        { "set", customfield.Value }
                     }
                 });
             }
