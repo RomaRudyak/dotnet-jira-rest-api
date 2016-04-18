@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JiraApi.Request
 {
-    public class PriorityRequest : RequestBase
+    public class PriorityRequest : JiraRestRequestBase
     {
         public PriorityRequest(HttpMethod method)
             :this(null, method)
@@ -23,7 +23,8 @@ namespace JiraApi.Request
 
         protected override void ConfigurPath()
         {
-            ExtendPath("rest/api/2/priority");
+            base.ConfigurPath();
+            ExtendPath("priority");
             if (!String.IsNullOrWhiteSpace(_keyOrId))
             {
                 ExtendPath(_keyOrId);

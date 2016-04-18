@@ -62,6 +62,7 @@
     <Compile Include="Request\IssueRequest.cs" />
     <Compile Include="Request\IssueRequestBase.cs" />
     <Compile Include="Request\IssueTransactionRequest.cs" />
+    <Compile Include="Request\JiraRestRequestBase.cs" />
     <Compile Include="Request\MyselfUserRequest.cs" />
     <Compile Include="Request\PriorityRequest.cs" />
     <Compile Include="Request\ProjectRequest.cs" />

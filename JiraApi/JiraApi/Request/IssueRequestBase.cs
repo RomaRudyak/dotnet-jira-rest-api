@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JiraApi.Request
 {
-    public class IssueRequestBase : RequestBase
+    public class IssueRequestBase : JiraRestRequestBase
     {
         public IssueRequestBase(String keyOrId, HttpMethod method)
             : base(method)
@@ -17,7 +17,7 @@ namespace JiraApi.Request
 
         protected override void ConfigurPath()
         {
-            ExtendPath("rest/api/2/issue");
+            ExtendPath("issue");
             if (!String.IsNullOrWhiteSpace(_keyOrId))
             {
                 ExtendPath(_keyOrId);

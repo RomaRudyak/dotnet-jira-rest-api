@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JiraApi.Request
 {
-    public class MyselfUserRequest : JiraRestRequestBase
+    public abstract class JiraRestRequestBase : RequestBase
     {
-        public MyselfUserRequest(HttpMethod method)
+        public JiraRestRequestBase(HttpMethod method)
             : base(method)
         {
 
@@ -17,8 +17,7 @@ namespace JiraApi.Request
 
         protected override void ConfigurPath()
         {
-            base.ConfigurPath();
-            ExtendPath("myself");
+            ExtendPath("rest/api/2");
         }
     }
 }

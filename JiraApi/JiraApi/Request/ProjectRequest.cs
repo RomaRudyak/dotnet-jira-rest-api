@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JiraApi.Request
 {
-    public class ProjectRequest : RequestBase
+    public class ProjectRequest : JiraRestRequestBase
     {
         public ProjectRequest(HttpMethod method)
             : this(null, method)
@@ -23,7 +23,8 @@ namespace JiraApi.Request
 
         protected override void ConfigurPath()
         {
-            ExtendPath("rest/api/2/project");
+            base.ConfigurPath();
+            ExtendPath("project");
             if (!String.IsNullOrWhiteSpace(_keyOrId))
             {
                 ExtendPath(_keyOrId);
