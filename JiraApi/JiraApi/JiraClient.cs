@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using JiraApi.Request;
+using JiraApi.Authorization;
 
 namespace JiraApi
 {
@@ -15,6 +16,14 @@ namespace JiraApi
     /// </summary>
     public class JiraClient : IDisposable
     {
+        public AuthorizationBase Authorization
+        {
+            set
+            {
+                _jiraHttpClient.DefaultRequestHeaders.Authorization = value;
+            }
+        }
+
         /// <summary>
         /// Execute request acoordinatly to reques configuration taked in
         /// </summary>
@@ -76,36 +85,12 @@ namespace JiraApi
         /// Configures base sercive url
         /// </param>
         public JiraClient(string baseUrl)
-            : this(baseUrl, null, null)
         {
-
-        }
-
-        /// <summary>
-        /// Constructs instance
-        /// </summary>
-        /// <param name="baseUrl">
-        /// Configures base sercive url
-        /// </param>
-        /// <param name="userName">
-        /// User login for Basic service authentication
-        /// </param>
-        /// <param name="password">
-        /// User password for Basic service authentication
-        /// </param>
-        public JiraClient(string baseUrl, string userName, string password)
-        {
-            _jsonSerializer = JsonSerializer.CreateDefault();
             _jiraHttpClient = new HttpClient();
             _jiraHttpClient.BaseAddress = new Uri(baseUrl);
-            _jiraHttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            _jiraHttpClient.DefaultRequestHeaders.Add("X-Atlassian-Token", "nocheck");
 
-            if (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
-            {
-                var byteArray = Encoding.ASCII.GetBytes(string.Format("{0}:{1}", userName, password));
-                _jiraHttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-            }
+            _jiraHttpClient.DefaultRequestHeaders.Add("X-Atlassian-Token", "nocheck");
+            _jiraHttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         private async Task<TResult> GetAsync<TResult>(RequestBase request)
@@ -135,6 +120,6 @@ namespace JiraApi
         }
 
         private HttpClient _jiraHttpClient;
-        private JsonSerializer _jsonSerializer;
+        private AuthorizationBase _authorization;
     }
 }
