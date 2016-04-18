@@ -11,13 +11,13 @@ namespace JiraApi.Request
 {
     public class IssueRequest : IssueRequestBase
     {
-        public string ProjectKey { get; set; }
-        public string Summary { get; set; }
-        public string Description { get; set; }
-        public string TypeId { get; set; }
-        public string PriorityId { get; set; }
-        public string[] Versions { get; set; }
-        public string Reporter { get; set; }
+        public String ProjectKey { get; set; }
+        public String Summary { get; set; }
+        public String Description { get; set; }
+        public String TypeId { get; set; }
+        public String PriorityId { get; set; }
+        public String[] Versions { get; set; }
+        public String Reporter { get; set; }
 
         public IEnumerable<CustomFieldBase> CustomFields { get; set; }
 
@@ -27,10 +27,10 @@ namespace JiraApi.Request
 
         }
 
-        public IssueRequest(string keyOrId, HttpMethod method)
+        public IssueRequest(String keyOrId, HttpMethod method)
             : base(keyOrId, method)
         {
-            Versions = new string[0];
+            Versions = new String[0];
             CustomFields = Enumerable.Empty<CustomFieldBase>();
         }
 
@@ -39,10 +39,10 @@ namespace JiraApi.Request
             ExtendParams("fields=status,resolution");
         }
 
-        protected override void ConfigurBody(Dictionary<string, dynamic> body)
+        protected override void ConfigurBody(Dictionary<String, dynamic> body)
         {
-            var updateSection = new Dictionary<string, dynamic>();
-            var fieldsSection = new Dictionary<string, dynamic>();
+            var updateSection = new Dictionary<String, dynamic>();
+            var fieldsSection = new Dictionary<String, dynamic>();
 
             ConfigureBodyUpdateSection(updateSection);
             ConfigureBodyFieldsSection(fieldsSection);
@@ -58,36 +58,36 @@ namespace JiraApi.Request
             }
         }
 
-        protected virtual void ConfigureBodyFieldsSection(Dictionary<string, dynamic> fieldsSection)
+        protected virtual void ConfigureBodyFieldsSection(Dictionary<String, dynamic> fieldsSection)
         {
-            if (!string.IsNullOrWhiteSpace(ProjectKey))
+            if (!String.IsNullOrWhiteSpace(ProjectKey))
             {
-                fieldsSection.Add("project", new Dictionary<string, string>
+                fieldsSection.Add("project", new Dictionary<String, String>
                 {
                     { "key", ProjectKey }
                 });
             }
-            if (!string.IsNullOrWhiteSpace(TypeId))
+            if (!String.IsNullOrWhiteSpace(TypeId))
             {
-                fieldsSection.Add("issuetype", new Dictionary<string, string>
+                fieldsSection.Add("issuetype", new Dictionary<String, String>
                 {
                     { "id", TypeId }
                 });
             }
 
-            if (!string.IsNullOrWhiteSpace(Summary))
+            if (!String.IsNullOrWhiteSpace(Summary))
             {
                 fieldsSection.Add("summary", Summary);
             }
 
-            if (!string.IsNullOrWhiteSpace(Description))
+            if (!String.IsNullOrWhiteSpace(Description))
             {
                 fieldsSection.Add("description", Description);
             }
 
-            if (!string.IsNullOrWhiteSpace(PriorityId))
+            if (!String.IsNullOrWhiteSpace(PriorityId))
             {
-                fieldsSection.Add("priority", new Dictionary<string, string>
+                fieldsSection.Add("priority", new Dictionary<String, String>
                 {
                     { "id", PriorityId }
                 });
@@ -95,12 +95,12 @@ namespace JiraApi.Request
 
             if (Versions.Length > 0)
             {
-                fieldsSection.Add("versions", Versions.Select(x=> new Dictionary<string, string> { { "id", x } }).ToArray());
+                fieldsSection.Add("versions", Versions.Select(x=> new Dictionary<String, String> { { "id", x } }).ToArray());
             }
 
-            if (!string.IsNullOrWhiteSpace(Reporter))
+            if (!String.IsNullOrWhiteSpace(Reporter))
             {
-                fieldsSection.Add("reporter", new Dictionary<string, string>
+                fieldsSection.Add("reporter", new Dictionary<String, String>
                 {
                     { "name", Reporter }
                 });
@@ -112,7 +112,7 @@ namespace JiraApi.Request
             }
         }
 
-        protected virtual void ConfigureBodyUpdateSection(Dictionary<string, dynamic> updateSection)
+        protected virtual void ConfigureBodyUpdateSection(Dictionary<String, dynamic> updateSection)
         {
             // Add worklog initialization here
 

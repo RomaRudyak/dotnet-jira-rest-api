@@ -18,7 +18,7 @@ namespace JiraApi.Authorization
 
         private static String GetParam(String user, String password)
         {
-            var byteArray = Encoding.UTF8.GetBytes(string.Format("{0}:{1}", user, password));
+            var byteArray = Encoding.UTF8.GetBytes(String.Format("{0}:{1}", user, password));
             return Convert.ToBase64String(byteArray);
         }
     }

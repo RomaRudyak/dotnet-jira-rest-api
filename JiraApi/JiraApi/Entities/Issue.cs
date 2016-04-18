@@ -12,7 +12,7 @@ namespace JiraApi.Entities
     public class Issue
     {
         [DataMember(Name = "key")]
-        public string Key { get; set; }
+        public String Key { get; set; }
 
         [DataMember(Name = "fields")]
         public IssueFields Fields { get; set; }

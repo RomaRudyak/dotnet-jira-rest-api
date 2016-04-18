@@ -11,10 +11,10 @@ namespace JiraApi.Request
 {
     public class IssueAttachmentsRequest : IssueRequestBase
     {
-        public string FileName { get; set; }
+        public String FileName { get; set; }
         public byte[] FileContent { get; set; }
 
-        public IssueAttachmentsRequest(string keyOrId, HttpMethod method)
+        public IssueAttachmentsRequest(String keyOrId, HttpMethod method)
             : base(keyOrId, method)
         {
 
@@ -28,7 +28,7 @@ namespace JiraApi.Request
 
         protected override HttpContent CreateHttpContent()
         {
-            if (string.IsNullOrWhiteSpace(FileName))
+            if (String.IsNullOrWhiteSpace(FileName))
             {
                 throw new InvalidOperationException("FileName property required.");
             }
@@ -42,7 +42,7 @@ namespace JiraApi.Request
 
             HttpContent fileContent = new ByteArrayContent(FileContent);
 
-            var mimeType = string.Concat("image/", Path.GetExtension(FileName));
+            var mimeType = String.Concat("image/", Path.GetExtension(FileName));
 
             fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(mimeType);
 

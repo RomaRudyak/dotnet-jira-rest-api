@@ -9,14 +9,14 @@ namespace JiraApi.Request
 {
     public class CreateIssueMetaRequest : IssueRequestBase
     {
-        public string[] Ids { get; set; }
-        public string[] Keys { get; set; }
+        public String[] Ids { get; set; }
+        public String[] Keys { get; set; }
 
         public CreateIssueMetaRequest(HttpMethod method)
             : base(null, method)
         {
-            Ids = new string[0];
-            Keys = new string[0];
+            Ids = new String[0];
+            Keys = new String[0];
         }
 
         protected override void ConfigurPath()
@@ -32,12 +32,12 @@ namespace JiraApi.Request
 
             if (!isIdsEmpty)
             {
-                ExtendParams("projectIds", string.Join(",", Ids));
+                ExtendParams("projectIds", String.Join(",", Ids));
             }
 
             if (!isKeysEmpty)
             {
-                ExtendParams("projectKeys", string.Join(",", Keys));
+                ExtendParams("projectKeys", String.Join(",", Keys));
             }
         }
     }

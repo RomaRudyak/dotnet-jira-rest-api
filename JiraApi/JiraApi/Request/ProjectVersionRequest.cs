@@ -8,7 +8,7 @@ namespace JiraApi.Request
 {
     public class ProjectVersionRequest : ProjectRequest
     {
-        public ProjectVersionRequest(string keyOrId, HttpMethod method)
+        public ProjectVersionRequest(String keyOrId, HttpMethod method)
             : base(keyOrId, method)
         {
 

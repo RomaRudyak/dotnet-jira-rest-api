@@ -37,7 +37,7 @@ namespace JiraApi.Request
         /// <returns>
         /// Returns request path part.
         /// </returns>
-        internal string BuildPath()
+        internal String BuildPath()
         {
             ConfigurPath();
             ConfigurParams();
@@ -45,7 +45,7 @@ namespace JiraApi.Request
             {
                 return _pathBuilder.ToString();
             }
-            return string.Concat(_pathBuilder.ToString(), "?", _paramsBuilder.ToString());
+            return String.Concat(_pathBuilder.ToString(), "?", _paramsBuilder.ToString());
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace JiraApi.Request
         /// </returns>
         protected virtual HttpContent CreateHttpContent()
         {
-            var body = new Dictionary<string, dynamic>();
+            var body = new Dictionary<String, dynamic>();
             ConfigurBody(body);
             var data = JObject.FromObject(body).ToString();
             return new StringContent(data, Encoding.UTF8, "application/json");
@@ -100,10 +100,10 @@ namespace JiraApi.Request
         /// Cofigures request JSON body.
         /// </summary>
         /// <param name="body">
-        /// Dictionary tha be converted into cvalified representation of JSON string.
+        /// Dictionary tha be converted into cvalified representation of JSON String.
         /// </param>
         /// <example>
-        /// var t = new Dictionary&lt;string, dynamic&gt; 
+        /// var t = new Dictionary&lt;String, dynamic&gt; 
         /// {
         ///     {"id", "1"}
         /// }
@@ -113,10 +113,10 @@ namespace JiraApi.Request
         /// }
         /// 
         /// 
-        /// var t = new Dictionary&lt;string, dynamic&gt; 
+        /// var t = new Dictionary&lt;String, dynamic&gt; 
         /// {
         ///     {
-        ///         "innerObj", new Dictionary&lt;string, dynamic&gt; 
+        ///         "innerObj", new Dictionary&lt;String, dynamic&gt; 
         ///         {
         ///             { "name", "SomeName" }
         ///         }
@@ -129,9 +129,9 @@ namespace JiraApi.Request
         ///     }
         /// }
         /// </example>
-        protected virtual void ConfigurBody(Dictionary<string, dynamic> body) { }
+        protected virtual void ConfigurBody(Dictionary<String, dynamic> body) { }
 
-        protected RequestBase ExtendPath(string pathPart)
+        protected RequestBase ExtendPath(String pathPart)
         {
             if (!pathPart.StartsWith("/"))
             {
@@ -141,7 +141,7 @@ namespace JiraApi.Request
             return this;
         }
 
-        protected RequestBase ExtendParams(string paramsPartName, string paramsPartValue)
+        protected RequestBase ExtendParams(String paramsPartName, String paramsPartValue)
         {
             _paramsBuilder.Append(paramsPartName);
             _paramsBuilder.Append("=");
@@ -150,7 +150,7 @@ namespace JiraApi.Request
             return this;
         }
         
-        protected RequestBase ExtendParams(string paramsPart)
+        protected RequestBase ExtendParams(String paramsPart)
         {
             _paramsBuilder.Append(paramsPart);
             _paramsBuilder.Append("&");

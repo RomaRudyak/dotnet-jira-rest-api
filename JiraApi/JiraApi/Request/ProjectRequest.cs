@@ -15,7 +15,7 @@ namespace JiraApi.Request
 
         }
 
-        public ProjectRequest(string keyOrId, HttpMethod method)
+        public ProjectRequest(String keyOrId, HttpMethod method)
             : base(method)
         {
             _keyOrId = keyOrId;
@@ -24,12 +24,12 @@ namespace JiraApi.Request
         protected override void ConfigurPath()
         {
             ExtendPath("rest/api/2/project");
-            if (!string.IsNullOrWhiteSpace(_keyOrId))
+            if (!String.IsNullOrWhiteSpace(_keyOrId))
             {
                 ExtendPath(_keyOrId);
             }
         }
 
-        private string _keyOrId;
+        private String _keyOrId;
     }
 }

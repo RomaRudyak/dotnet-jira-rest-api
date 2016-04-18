@@ -9,9 +9,9 @@ namespace JiraApi.Request
 {
     public class IssueCommentRequest : IssueRequestBase
     {
-        public string Body { get; set; }
+        public String Body { get; set; }
 
-        public IssueCommentRequest(string idOrKey, HttpMethod method)
+        public IssueCommentRequest(String idOrKey, HttpMethod method)
             :base(idOrKey, method)
         {
 
@@ -23,7 +23,7 @@ namespace JiraApi.Request
             ExtendPath("comment");
         }
 
-        protected override void ConfigurBody(Dictionary<string, dynamic> body)
+        protected override void ConfigurBody(Dictionary<String, dynamic> body)
         {
             body.Add("body", Body);
         }

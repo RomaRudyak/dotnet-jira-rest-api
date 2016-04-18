@@ -39,7 +39,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorization\AuthorizationBase.cs" />
     <Compile Include="Authorization\BasicAuthentication.cs" />
     <Compile Include="CustomFields\ArrayCustomField.cs" />
     <Compile Include="CustomFields\CustomFieldBase.cs" />

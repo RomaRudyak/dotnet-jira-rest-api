@@ -9,7 +9,7 @@ namespace JiraApi.Request
 {
     public class IssueRequestBase : RequestBase
     {
-        public IssueRequestBase(string keyOrId, HttpMethod method)
+        public IssueRequestBase(String keyOrId, HttpMethod method)
             : base(method)
         {
             _keyOrId = keyOrId;
@@ -18,12 +18,12 @@ namespace JiraApi.Request
         protected override void ConfigurPath()
         {
             ExtendPath("rest/api/2/issue");
-            if (!string.IsNullOrWhiteSpace(_keyOrId))
+            if (!String.IsNullOrWhiteSpace(_keyOrId))
             {
                 ExtendPath(_keyOrId);
             }
         }
 
-        private string _keyOrId;
+        private String _keyOrId;
     }
 }

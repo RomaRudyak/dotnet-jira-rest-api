@@ -15,7 +15,7 @@ namespace JiraApi.CustomFields
     /// </example>
     public class ArrayCustomField : CustomFieldBase
     {
-        public ArrayCustomField(string id, string[] value)
+        public ArrayCustomField(String id, String[] value)
             : base(id, value)
         {
 

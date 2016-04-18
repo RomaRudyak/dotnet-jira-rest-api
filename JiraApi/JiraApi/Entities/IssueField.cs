@@ -11,8 +11,8 @@ namespace JiraApi.Entities
     public class IssueField
     {
         [DataMember(Name = "name")]
-        public string Name { get; set; }
+        public String Name { get; set; }
         [DataMember(Name = "id")]
-        public string Id { get; set; }
+        public String Id { get; set; }
     }
 }

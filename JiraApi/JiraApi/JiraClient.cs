@@ -52,7 +52,7 @@ namespace JiraApi
                 return await PostAsync<TResult>(request);
             }
             
-            throw new NotImplementedException(string.Format("'{0}' method not implement. Please implement it for farther usage", request.Method.Method));
+            throw new NotImplementedException(String.Format("'{0}' method not implement. Please implement it for farther usage", request.Method.Method));
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace JiraApi
                 return;
             }
 
-            throw new NotImplementedException(string.Format("'{0}' method not implement. Please implement it for farther usage", request.Method.Method));
+            throw new NotImplementedException(String.Format("'{0}' method not implement. Please implement it for farther usage", request.Method.Method));
         }
 
         public void Dispose()
@@ -86,7 +86,7 @@ namespace JiraApi
         /// <param name="baseUrl">
         /// Configures base sercive url
         /// </param>
-        public JiraClient(string baseUrl)
+        public JiraClient(String baseUrl)
         {
             _jiraHttpClient = new HttpClient();
             _jiraHttpClient.BaseAddress = new Uri(baseUrl);
@@ -122,6 +122,5 @@ namespace JiraApi
         }
 
         private HttpClient _jiraHttpClient;
-        private AuthorizationBase _authorization;
     }
 }

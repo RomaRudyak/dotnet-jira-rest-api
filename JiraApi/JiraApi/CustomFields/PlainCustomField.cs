@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace JiraApi.CustomFields
 {
     /// <summary>
-    /// Used for serialization to string
+    /// Used for serialization to String
     /// </summary>
     /// <example>
     /// Serialized to:
@@ -15,7 +15,7 @@ namespace JiraApi.CustomFields
     /// </example>
     public class PlainCustomField : CustomFieldBase
     {
-        public PlainCustomField(string id, string value)
+        public PlainCustomField(String id, String value)
             : base(id, value)
         {
 

@@ -11,12 +11,12 @@ namespace JiraApi.Entities
     public class User
     {
         [DataMember(Name = "key")]
-        public string Key { get; set; }
+        public String Key { get; set; }
         [DataMember(Name="name")]
-        public string Name { get; set; }
+        public String Name { get; set; }
         [DataMember(Name = "emilAddress")]
-        public string Email { get; set; }
+        public String Email { get; set; }
         [DataMember(Name = "displayName")]
-        public string DisplayName { get; set; }
+        public String DisplayName { get; set; }
     }
 }

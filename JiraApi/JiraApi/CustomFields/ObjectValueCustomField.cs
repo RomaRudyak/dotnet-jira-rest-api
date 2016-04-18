@@ -17,8 +17,8 @@ namespace JiraApi.CustomFields
     /// </example>
     public class ObjectValueCustomField : CustomFieldBase
     {
-        public ObjectValueCustomField(string id, string value)
-            : base(id, new Dictionary<string, string>{{"value", value}})
+        public ObjectValueCustomField(String id, String value)
+            : base(id, new Dictionary<String, String>{{"value", value}})
         {
 
         }

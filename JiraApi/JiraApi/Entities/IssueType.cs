@@ -11,11 +11,11 @@ namespace JiraApi.Entities
     public class IssueType
     {
         [DataMember(Name="id")]
-        public string Id { get; set; }
+        public String Id { get; set; }
         [DataMember(Name = "name")]
-        public string Name { get; set; }
+        public String Name { get; set; }
         [DataMember(Name = "description")]
-        public string Description { get; set; }
+        public String Description { get; set; }
         [DataMember(Name = "subtask")]
         public bool IsSubtask { get; set; }
 

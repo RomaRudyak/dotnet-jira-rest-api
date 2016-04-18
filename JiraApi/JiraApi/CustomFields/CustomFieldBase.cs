@@ -16,20 +16,20 @@ namespace JiraApi.CustomFields
         /// Returns full custom field.
         /// Example: "customfield_10001"
         /// </summary>
-        public string FullName { get; private set; }
+        public String FullName { get; private set; }
         /// <summary>
         /// Custom field Id
         /// </summary>
-        public string Id { get; private set; }
+        public String Id { get; private set; }
         /// <summary>
         /// Returns appropriate object value for serialization
         /// </summary>
         public dynamic Value { get; private set; }
 
-        protected CustomFieldBase(string id, dynamic value)
+        protected CustomFieldBase(String id, dynamic value)
         {
             Id = id;
-            FullName = string.Concat("customfield_", Id);
+            FullName = String.Concat("customfield_", Id);
             Value = value;
         }
     }
