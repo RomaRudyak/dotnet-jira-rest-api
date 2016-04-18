@@ -76,8 +76,7 @@ namespace JiraApi
 
         public void Dispose()
         {
-            _jiraHttpClient.Dispose();
-            _jiraHttpClient = null;
+            Dispose(true);
         }
 
         /// <summary>
@@ -93,6 +92,21 @@ namespace JiraApi
 
             _jiraHttpClient.DefaultRequestHeaders.Add("X-Atlassian-Token", "nocheck");
             _jiraHttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        protected virtual void Dispose(Boolean disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                _jiraHttpClient.Dispose();
+                _jiraHttpClient = null;
+            }
+            _disposed = true;
         }
 
         private async Task<TResult> GetAsync<TResult>(RequestBase request)
@@ -122,5 +136,6 @@ namespace JiraApi
         }
 
         private HttpClient _jiraHttpClient;
+        private bool _disposed = false;
     }
 }
