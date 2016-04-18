@@ -103,7 +103,7 @@ namespace JiraApi.Request
             
             foreach (var customfield in CustomFields)
             {
-                fieldsSection.Add(customfield.FullName, customfield.Value);
+                fieldsSection.Add(customfield.FullName, customfield.ToString());
             }
         }
 

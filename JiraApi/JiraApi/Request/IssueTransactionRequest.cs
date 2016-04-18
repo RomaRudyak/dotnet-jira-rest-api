@@ -61,9 +61,9 @@ namespace JiraApi.Request
             {
                 updateSection.Add(customfield.FullName, new[]
                 {
-                    new Dictionary<String, dynamic>
+                    new Dictionary<String, String>
                     {
-                        { "set", customfield.Value }
+                        { "set", customfield.ToString() }
                     }
                 });
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,16 +22,20 @@ namespace JiraApi.CustomFields
         /// Custom field Id
         /// </summary>
         public String Id { get; private set; }
-        /// <summary>
-        /// Returns appropriate object value for serialization
-        /// </summary>
-        public dynamic Value { get; private set; }
+
+        public override string ToString()
+        {
+            return _serializedObject ?? (_serializedObject = JsonConvert.SerializeObject(_value));
+        }
 
         protected CustomFieldBase(String id, dynamic value)
         {
             Id = id;
             FullName = String.Concat("customfield_", Id);
-            Value = value;
+            _value = value;
         }
+
+        private readonly dynamic _value;
+        private string _serializedObject;
     }
 }
