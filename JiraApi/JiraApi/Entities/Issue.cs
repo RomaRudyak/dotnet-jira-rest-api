@@ -32,26 +32,6 @@ namespace JiraApi.Entities
                 return !(Fields == null || Fields.Resolution == null);
             }
         }
-
-        public bool IsStatusReview()
-        {
-            if (!HasStatus)
-            {
-                return false;
-            }
-
-            return Fields.Status.Name.ToUpperInvariant().Contains("REVIEW");
-        }
-
-        public bool IsResolutionFixed()
-        {
-            if (HasResolution)
-            {
-                return false;
-            }
-
-            return Fields.Resolution.Name.ToUpperInvariant().Contains("FIXED");
-        }
     }
 
     [DataContract]
