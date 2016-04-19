@@ -148,17 +148,13 @@ namespace JiraApi.Request
 
         protected RequestBase ExtendParams(String paramsPartName, String paramsPartValue)
         {
+            if (_paramsBuilder.Length > 0)
+            {
+                _paramsBuilder.Append("&");
+            }
             _paramsBuilder.Append(paramsPartName);
             _paramsBuilder.Append("=");
             _paramsBuilder.Append(paramsPartValue);
-            _paramsBuilder.Append("&");
-            return this;
-        }
-        
-        protected RequestBase ExtendParams(String paramsPart)
-        {
-            _paramsBuilder.Append(paramsPart);
-            _paramsBuilder.Append("&");
             return this;
         }
         
