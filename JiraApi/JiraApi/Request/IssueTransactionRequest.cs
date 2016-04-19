@@ -26,7 +26,7 @@ namespace JiraApi.Request
 
         protected override void ConfigurParams()
         {
-            ExtendParams("expand=transitions.fields");
+            ExtendParams("expand", "transitions.fields");
         }
 
         protected override void ConfigurBody(Dictionary<String, dynamic> body)
