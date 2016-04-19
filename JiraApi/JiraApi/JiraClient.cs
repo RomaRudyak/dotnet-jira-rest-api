@@ -129,7 +129,7 @@ namespace JiraApi
 
         private async Task<HttpResponseMessage> PostAsyncInternal(RequestBase request)
         {
-            var requstBody = request.BuildBody();
+            var requstBody = request.BuildHttpBodyContent();
             var path = request.BuildPath();
             var responce = await _jiraHttpClient.PostAsync(path, requstBody);
             return responce.EnsureSuccessStatusCode();

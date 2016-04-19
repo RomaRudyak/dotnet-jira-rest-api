@@ -54,32 +54,13 @@ namespace JiraApi.Request
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>
-        /// Returns HttpContent for request body.
-        /// By default it is StringContent with 'application/json' mimetype
-        /// </returns>
-        internal HttpContent BuildBody()
-        {
-            return CreateHttpContent();
-        }
-
-        /// <summary>
-        /// Creates HttpContent for body reques.
-        /// Default creates StringContent with 'application/json' mimetype, 
-        /// but can be overriden for other Content types
+        /// Used for creating Http Body Content which 
+        /// will be send to the servrer with request
         /// </summary>
         /// <returns>
         /// HttpContent
         /// </returns>
-        protected virtual HttpContent CreateHttpContent()
-        {
-            var body = new Dictionary<String, dynamic>();
-            ConfigurBody(body);
-            var data = JObject.FromObject(body).ToString();
-            return new StringContent(data, Encoding.UTF8, "application/json");
-        }
+        internal abstract HttpContent BuildHttpBodyContent();
 
         /// <summary>
         /// Required for implementation.
@@ -100,41 +81,6 @@ namespace JiraApi.Request
         /// In this method use ExtendParams method for extending request path.
         /// </summary>
         protected virtual void ConfigurParams() { }
-
-        /// <summary>
-        /// Cofigures request JSON body.
-        /// </summary>
-        /// <param name="body">
-        /// Dictionary tha be converted into cvalified representation of JSON String.
-        /// </param>
-        /// <example>
-        /// var t = new Dictionary&lt;String, dynamic&gt; 
-        /// {
-        ///     {"id", "1"}
-        /// }
-        /// Reults in:
-        /// {
-        ///     "id": "1"
-        /// }
-        /// 
-        /// 
-        /// var t = new Dictionary&lt;String, dynamic&gt; 
-        /// {
-        ///     {
-        ///         "innerObj", new Dictionary&lt;String, dynamic&gt; 
-        ///         {
-        ///             { "name", "SomeName" }
-        ///         }
-        ///     }
-        /// }
-        /// Reults in:
-        /// {
-        ///     "innerObj": {
-        ///         "name": "SomeName"
-        ///     }
-        /// }
-        /// </example>
-        protected virtual void ConfigurBody(Dictionary<String, dynamic> body) { }
 
         protected RequestBase ExtendPath(String pathPart)
         {

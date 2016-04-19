@@ -12,7 +12,7 @@ namespace JiraApi.Request
     public class IssueAttachmentsRequest : IssueRequestBase
     {
         public String FileName { get; set; }
-        public byte[] FileContent { get; set; }
+        public Byte[] FileContent { get; set; }
 
         public IssueAttachmentsRequest(String keyOrId, HttpMethod method)
             : base(keyOrId, method)
@@ -20,13 +20,7 @@ namespace JiraApi.Request
 
         }
 
-        protected override void ConfigurPath()
-        {
-            base.ConfigurPath();
-            ExtendPath("attachments");
-        }
-
-        protected override HttpContent CreateHttpContent()
+        internal override HttpContent BuildHttpBodyContent()
         {
             if (String.IsNullOrWhiteSpace(FileName))
             {
@@ -49,6 +43,12 @@ namespace JiraApi.Request
             content.Add(fileContent, "file", FileName);
 
             return content;
+        }
+
+        protected override void ConfigurPath()
+        {
+            base.ConfigurPath();
+            ExtendPath("attachments");
         }
     }
 }
