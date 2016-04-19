@@ -17,6 +17,7 @@ namespace JiraApi.Request
 
         protected override void ConfigurPath()
         {
+            base.ConfigurPath();
             ExtendPath("issue");
             if (!String.IsNullOrWhiteSpace(_keyOrId))
             {
