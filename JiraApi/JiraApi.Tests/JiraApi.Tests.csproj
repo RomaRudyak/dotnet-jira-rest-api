@@ -77,6 +77,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JiraClientTests.cs" />
     <Compile Include="Request\MyselfRequestTests.cs" />
+    <Compile Include="Request\PriorityRequestTests.cs" />
+    <Compile Include="Request\CreateIssueMetaRequestTests.cs" />
     <Compile Include="Request\ProjectRequestTests.cs" />
   </ItemGroup>
   <ItemGroup />
